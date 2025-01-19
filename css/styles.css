@@ -1,0 +1,41 @@
+html {
+    font-size: 62.5%;
+}
+h2 {
+    margin: 0;
+}
+.gallery--item_image {
+    width:15rem;
+    height:15rem;
+    object-fit: cover;
+}
+.gallery {
+    list-style: none;
+    max-height: 65vh;
+    overflow: auto;
+}
+.gallery--item_title {
+    display: block;
+    width:15rem;
+    font-size: 2.5rem;
+    background-color: aliceblue;
+    text-align: center;
+}
+.gallery--item_image {
+    display: block;
+}
+.gallery--item {
+    border: 2px solid lightgrey;
+    border-radius: 40px;
+    overflow: hidden;
+    width: 15rem;
+    margin-top: 10px;
+}
+.logo {
+    font-size: 4rem;
+    text-align: center;
+    background-color: azure;
+}
+.gallery li:nth-child(1) {
+    margin-top: 0;
+}
