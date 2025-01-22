@@ -1,177 +1,177 @@
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body {
-    margin: 0;
-    background: url(../images/dalmatian-spots-mobile.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  margin: 0;
+  background: url(../images/dalmatian-spots-mobile.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 h2 {
-    margin: 0;
+  margin: 0;
 }
 .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 .detailedFrame {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 .detailedContainer {
-    position: relative;
+  position: relative;
 }
 .detailedContainer--image {
-    width: 30rem;
-    height: 25rem;
-    object-fit: cover;
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  width: 30rem;
+  height: 25rem;
+  object-fit: cover;
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
 }
 .detailedContainer--title {
-    display: block;
-    width: 20rem;
-    position: absolute;
-    font-size: 2rem;
-    bottom: 1rem;
-    left: 3rem;
-    background-color: blue;
-    color: white;
+  display: block;
+  width: 20rem;
+  position: absolute;
+  font-size: 2rem;
+  bottom: 1rem;
+  left: 3rem;
+  background-color: blue;
+  color: white;
 }
 .gallery--item_image {
-    width:12rem;
-    height:10rem;
-    object-fit: cover;
+  width: 12rem;
+  height: 10rem;
+  object-fit: cover;
 }
 .gallery {
-    list-style: none;
-    max-height: 50vh;
-    width: 30rem;
-    overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-left: 4rem;
+  list-style: none;
+  max-height: 50vh;
+  width: 30rem;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-left: 4rem;
 }
 .gallery--item_title {
-    display: block;
-    width:12rem;
-    height: 3rem;
-    font-size: 2rem;
-    background-color: aliceblue;
-    text-align: center;
+  display: block;
+  width: 12rem;
+  height: 3rem;
+  font-size: 2rem;
+  background-color: aliceblue;
+  text-align: center;
 }
 .gallery--item_image {
-    display: block;
+  display: block;
 }
 .gallery--item {
-    border: 2px solid lightgrey;
-    border-radius: 40px;
-    overflow: hidden;
-   min-width: 12rem;
-   max-height:15rem;
-    margin-top: 10px;
+  border: 2px solid lightgrey;
+  border-radius: 40px;
+  overflow: hidden;
+  min-width: 12rem;
+  max-height: 15rem;
+  margin-top: 10px;
 }
 .logo {
-    font-size: 3rem;
+  font-size: 3rem;
+  text-align: center;
+  background-color: azure;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
+@media screen and (min-width: 500px) {
+  .main {
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+  }
+  .detailedContainer--title {
+    bottom: 3rem;
+  }
+
+  .gallery--item_image {
+    width: 12rem;
+    height: 10rem;
+  }
+  .gallery {
+    max-height: 80vh;
+    width: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding-left: 4rem;
+    justify-content: flex-start;
+  }
+
+  .gallery--item {
+    min-width: 12rem;
+    min-height: 13rem;
+    max-height: 13rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  body {
+    background: url(../images/dalmatian-spots.svg);
+  }
+  .detailedFrame {
+    margin-top: 5rem;
+  }
+  .detailedContainer--image {
+    width: 80rem;
+    height: 60rem;
+  }
+  .detailedContainer--title {
+    width: 50rem;
+    position: absolute;
+    font-size: 5rem;
+    bottom: 2rem;
+    left: 7rem;
+  }
+  .gallery--item_image {
+    width: 25rem;
+    height: 15rem;
+  }
+  .gallery {
+    list-style: none;
+    max-height: 85vh;
+    padding-right: 3rem;
+    margin-left: 4rem;
+  }
+  .gallery--item_title {
+    display: block;
+    width: 25rem;
+    font-size: 2.5rem;
+    background-color: aliceblue;
     text-align: center;
-    background-color: azure;
-    text-transform: uppercase;
-letter-spacing: 8px;
-}
-@media screen and (min-width:500px){
+  }
+  .gallery--item_image {
+    display: block;
+  }
+  .gallery--item {
+    width: 25rem;
+    min-width: 25rem;
+    min-height: 18rem;
+    max-height: 18rem;
     
-    .main {
-        flex-direction: row-reverse;
-        flex-wrap: nowrap;        
-    }
-    .detailedContainer--title {
-       
-        bottom: 3rem;
-       
-    }
-    
-    
-    .gallery--item_image {
-        width:12rem;
-        height:10rem;
-    }
-    .gallery {
-      
-        max-height: 80vh;
-        width: auto;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        padding-left: 4rem;
-        justify-content: flex-start;
-    }
-    
-   
-    .gallery--item {
-     
-       min-width: 12rem;
-       min-height:13rem;
-       max-height:13rem;
-    }
-   
-}
-@media screen and (min-width:1000px){
-    body {
-        background: url(../images/dalmatian-spots.svg);
-        
-    }
-    .detailedFrame {
-        margin-top: 5rem;
-    }
-    .detailedContainer--image {
-        width: 80rem;
-        height: 60rem;
-    }
-    .detailedContainer--title {
-        width: 50rem;
-        position: absolute;
-        font-size: 5rem;
-        bottom: 2rem;
-        left: 7rem;
-       
-    }
-    .gallery--item_image {
-        width:25rem;
-        height:15rem;
-    }
-    .gallery {
-        list-style: none;
-        max-height: 85vh;
-        padding-right: 3rem;
-        margin-left: 4rem
-    }
-    .gallery--item_title {
-        display: block;
-        width:25rem;
-        font-size: 2.5rem;
-        background-color: aliceblue;
-        text-align: center;
-    }
-    .gallery--item_image {
-        display: block;
-    }
-    .gallery--item {
-      
-        width: 25rem;
-        min-width: 25rem;
-       min-height:18rem;
-       max-height:18rem;
-    }
-    
-    .gallery li:nth-child(1) {
-        margin-top: 0;
-    }
-    .logo {
-        font-size: 4rem;
-    }
+  }
+  .gallery--item:hover {
+    filter:invert(20%) blur(2px)
+  }
+
+  .gallery li:nth-child(1) {
+    margin-top: 0;
+  }
+  .logo {
+    font-size: 4rem;
+  }
 }
