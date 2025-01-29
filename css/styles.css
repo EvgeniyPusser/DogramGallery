@@ -41,15 +41,23 @@ h2 {
   );
 }
 .detailedContainer--title {
-  display: block;
-  width: 20rem;
+  display: inline-block;
+  width: 30ch;
   position: absolute;
   font-size: 2rem;
+  font-family: airstream;
   bottom: 1rem;
   left: 3rem;
-  background-color: blue;
-  color: white;
+  background-color: aliceblue;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+ 
+  
+  font-style: italic;
 }
+
 .gallery--item_image {
   width: 12rem;
   height: 10rem;
@@ -70,6 +78,7 @@ h2 {
   width: 12rem;
   height: 3rem;
   font-size: 2rem;
+  font-family: 'Open Sans';
   background-color: aliceblue;
   text-align: center;
 }
@@ -85,12 +94,14 @@ h2 {
   margin-top: 10px;
 }
 .logo {
+  font-family: LakeshoreDrive;
   font-size: 3rem;
   text-align: center;
   background-color: azure;
   text-transform: uppercase;
   letter-spacing: 8px;
 }
+
 @media screen and (min-width: 500px) {
   .main {
     flex-direction: row-reverse;
@@ -131,12 +142,21 @@ h2 {
     height: 60rem;
   }
   .detailedContainer--title {
-    width: 50rem;
+    width: 40ch;
     position: absolute;
-    font-size: 5rem;
-    bottom: 2rem;
-    left: 7rem;
+    font-size: 4rem;
+    bottom: 10rem;
+    left: -10rem;
   }
+  .detailedContainer--title:hover {
+    font-family: airstream;
+    overflow: visible;
+    white-space: initial;
+    text-overflow: initial;
+    font-size: 5rem;
+  }
+ 
+
   .gallery--item_image {
     width: 25rem;
     height: 15rem;
@@ -162,10 +182,9 @@ h2 {
     min-width: 25rem;
     min-height: 18rem;
     max-height: 18rem;
-    
   }
   .gallery--item:hover {
-    filter:invert(20%) blur(2px)
+    filter: invert(20%) blur(2px);
   }
 
   .gallery li:nth-child(1) {
