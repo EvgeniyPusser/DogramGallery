@@ -53,11 +53,13 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
- 
   
   font-style: italic;
 }
-
+.for_ellipsis {
+  display: block;
+  
+}
 .gallery--item_image {
   width: 12rem;
   height: 10rem;
@@ -154,6 +156,10 @@ h2 {
     white-space: initial;
     text-overflow: initial;
     font-size: 5rem;
+  }
+  .for_ellipsis:hover {
+    display: none;
+    z-index: -1;
   }
  
 
