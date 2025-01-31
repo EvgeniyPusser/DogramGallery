@@ -39,6 +39,16 @@ h2 {
     0% 70%,
     0% 30%
   );
+ 
+
+}
+.animation-down {
+  animation: zoomInDown;
+  animation-duration: 2s;
+}
+.animation-up {
+  animation: zoomInUp;
+  animation-duration: 2.5s;
 }
 .detailedContainer--title {
   display: inline-block;
@@ -46,7 +56,7 @@ h2 {
   position: absolute;
   font-size: 2rem;
   font-family: airstream;
-  bottom: 1rem;
+  bottom: 0.5rem;
   left: 3rem;
   background-color: aliceblue;
   color: black;
@@ -55,6 +65,18 @@ h2 {
   text-overflow: ellipsis;
   
   font-style: italic;
+  
+}
+.detailedContainer--title:hover {
+  font-family: airstream;
+  overflow: visible;
+  white-space: initial;
+  text-overflow: initial;
+  font-size: 2rem;
+}
+.for_ellipsis:hover {
+  display: none;
+  z-index: -1;
 }
 .for_ellipsis {
   display: block;
@@ -79,8 +101,9 @@ h2 {
   display: block;
   width: 12rem;
   height: 3rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-family: 'Open Sans';
+  font-weight: 600;
   background-color: aliceblue;
   text-align: center;
 }
@@ -110,7 +133,7 @@ h2 {
     flex-wrap: nowrap;
   }
   .detailedContainer--title {
-    bottom: 3rem;
+    bottom: 6rem;
   }
 
   .gallery--item_image {
@@ -136,6 +159,10 @@ h2 {
   body {
     background: url(../images/dalmatian-spots.svg);
   }
+  .detailedContainer--title:hover {
+    
+    font-size: 5rem;
+  }
   .detailedFrame {
     margin-top: 5rem;
   }
@@ -147,20 +174,10 @@ h2 {
     width: 40ch;
     position: absolute;
     font-size: 4rem;
-    bottom: 10rem;
+    bottom: 2rem;
     left: -10rem;
   }
-  .detailedContainer--title:hover {
-    font-family: airstream;
-    overflow: visible;
-    white-space: initial;
-    text-overflow: initial;
-    font-size: 5rem;
-  }
-  .for_ellipsis:hover {
-    display: none;
-    z-index: -1;
-  }
+  
  
 
   .gallery--item_image {
