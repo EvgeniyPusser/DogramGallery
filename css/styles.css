@@ -1,3 +1,14 @@
+
+
+body {
+  --width-gallery-image: 12rem;
+  --width-gallery: calc(var(--width-gallery-image) * 2 + var(--width-gallery-image) / 2);
+  --height-gallery-image: 10rem;
+  --background-color-title: aliceblue;
+  --color-title: black;
+  --width-detailed-title: 30ch
+
+}
 html {
   font-size: 62.5%;
 }
@@ -52,14 +63,14 @@ h2 {
 }
 .detailedContainer--title {
   display: inline-block;
-  width: 30ch;
+  width: var(--width-detailed-title);
   position: absolute;
   font-size: 2rem;
   font-family: airstream;
   bottom: 0.5rem;
   left: 3rem;
-  background-color: aliceblue;
-  color: black;
+  background-color: var(--background-color-title);
+  color: var(--color-title);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -83,28 +94,29 @@ h2 {
   
 }
 .gallery--item_image {
-  width: 12rem;
-  height: 10rem;
+  width: var(--width-gallery-image);
+  height: var(--height-gallery-image);
   object-fit: cover;
 }
 .gallery {
   list-style: none;
   max-height: 50vh;
-  width: 30rem;
+  width: var(--width-gallery);
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-left: 4rem;
+  padding-left: calc(16rem - var(--width-gallery-image))
 }
 .gallery--item_title {
   display: block;
-  width: 12rem;
-  height: 3rem;
+  width: var(--width-gallery-image);
+  height: calc(var(--width-gallery-image) * 0.25);
   font-size: 1.8rem;
   font-family: 'Open Sans';
   font-weight: 600;
-  background-color: aliceblue;
+  background-color: var(--background-color-title);
+  color: var(--color-title);
   text-align: center;
 }
 .gallery--item_image {
@@ -114,7 +126,7 @@ h2 {
   border: 2px solid lightgrey;
   border-radius: 40px;
   overflow: hidden;
-  min-width: 12rem;
+  min-width: var(--width-gallery-image);
   max-height: 15rem;
   margin-top: 10px;
 }
@@ -128,6 +140,7 @@ h2 {
 }
 
 @media screen and (min-width: 500px) {
+ 
   .main {
     flex-direction: row-reverse;
     flex-wrap: nowrap;
@@ -136,10 +149,7 @@ h2 {
     bottom: 6rem;
   }
 
-  .gallery--item_image {
-    width: 12rem;
-    height: 10rem;
-  }
+  
   .gallery {
     max-height: 80vh;
     width: auto;
@@ -150,12 +160,17 @@ h2 {
   }
 
   .gallery--item {
-    min-width: 12rem;
-    min-height: 13rem;
-    max-height: 13rem;
+    min-width: var(--width-gallery-image);
+    min-height: calc(var(--width-gallery-image) + 1rem);
+    max-height: calc(var(--width-gallery-image) + 1rem);
   }
 }
 @media screen and (min-width: 1000px) {
+  body {
+    --width-gallery-image: 25rem;
+    --width-gallery: calc(var(--width-gallery-image) * 2 + var(--width-gallery-image) / 2);
+    --height-gallery-image: 15rem;
+  }
   body {
     background: url(../images/dalmatian-spots.svg);
   }
@@ -171,7 +186,7 @@ h2 {
     height: 60rem;
   }
   .detailedContainer--title {
-    width: 40ch;
+    width: calc(var(--width-detailed-title) + 10ch);
     position: absolute;
     font-size: 4rem;
     bottom: 2rem;
@@ -180,10 +195,7 @@ h2 {
   
  
 
-  .gallery--item_image {
-    width: 25rem;
-    height: 15rem;
-  }
+  
   .gallery {
     list-style: none;
     max-height: 85vh;
@@ -192,17 +204,13 @@ h2 {
   }
   .gallery--item_title {
     display: block;
-    width: 25rem;
     font-size: 2.5rem;
-    background-color: aliceblue;
     text-align: center;
   }
   .gallery--item_image {
     display: block;
   }
   .gallery--item {
-    width: 25rem;
-    min-width: 25rem;
     min-height: 18rem;
     max-height: 18rem;
   }
