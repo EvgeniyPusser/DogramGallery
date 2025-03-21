@@ -53,39 +53,17 @@ h2 {
  
 
 }
-/* Smooth fade-in and slide-up effect */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Smooth fade-in and slide-down effect */
-@keyframes fadeSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animation-down {
+  animation: zoomInDown;
+  animation-duration: 2s;
 }
 
 .animation-up {
-  animation: fadeSlideUp 0.3s ease-in-out;
+  animation: zoomInUp;
+  animation-duration: 2.5s;
 }
-.animation-down {
-  animation: fadeSlideDown 0.3s ease-in-out;
-}
-.detailedContainer--title {
+
+    .detailedContainer--title {
   display: inline-block;
   width: var(--width-detailed-title);
   position: absolute;
