@@ -1,75 +1,159 @@
+// // Select the central image and title elements
+// const detailedImage = document.getElementById("detailedImage");
+// const detailedTitle = document.getElementById("detailedTitle");
+
+// // Function to render images and names
+// async function drawImages(elem) {
+//   try {
+//     const response = await fetch("https://api.thecatapi.com/v1/breeds");
+//     if (!response.ok) throw new Error("Failed to fetch cat breeds");
+
+//     const data = await response.json();
+//     elem.innerHTML = getItems(data);
+//     addGalleryImageEventListeners(); // Add event listeners after rendering
+//   } catch (error) {
+//     console.error("Error fetching cat images:", error);
+//     elem.innerHTML = "<p>Error loading cat breeds. Try again later.</p>";
+//   }
+// }
+
+// // Function to create list items for each breed
+// function getItems(data) {
+//   return data
+//     .map((breed) => {
+//       const image = breed.reference_image_id
+//         ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
+//         : "placeholder.jpg"; // Handle missing images
+//       return `
+//         <li class="gallery--item">
+//           <img
+//             src="${image}"
+//             alt="${breed.name}"
+//             class="gallery--item_image"
+//             data-detailed-image="${image}"
+//             data-detailed-title="${breed.description}"
+//           />
+//           <span class="gallery--item_title">${breed.name}</span>
+//         </li>
+//       `;
+//     })
+//     .join("");
+// }
+
+// // Add event listener to update central image and title
+// function addGalleryImageEventListeners() {
+//   document.querySelectorAll(".gallery--item_image").forEach((image) => {
+//     image.addEventListener("click", function () {
+//       setDetails(image);
+//     });
+//   });
+// }
+
+// function setDetails(image) {
+//   // Temporarily remove animations to restart them
+//   detailedImage.classList.remove("animation-up");
+//   detailedTitle.classList.remove("animation-down");
+
+//   // Set a small delay before changing the image (for animation to reset)
+//   setTimeout(() => {
+//     detailedImage.src = image.getAttribute("data-detailed-image");
+//     detailedTitle.innerHTML = image.getAttribute("data-detailed-title");
+
+//     // Trigger animation for smooth transition
+//     detailedImage.classList.add("animation-up");
+//     detailedTitle.classList.add("animation-down");
+//   }, 50);
+// }
+
+// // Draw images when the page is loaded
+// window.onload = function () {
+//   const galleryContainer = document.getElementById("ul_elem");
+//   if (galleryContainer) {
+//     drawImages(galleryContainer);
+//   } else {
+//     console.error("Element #ul_elem not found");
+//   }
+// };
 // Select the central image and title elements
 const detailedImage = document.getElementById("detailedImage");
 const detailedTitle = document.getElementById("detailedTitle");
 
 // Function to render images and names
-async function drawImages(elem) {
-  const response = await fetch("https://api.thecatapi.com/v1/breeds");
-  const data = await response.json();
-  const items = getItems(data);
-  elem.innerHTML = items;
+async function drawImages() {
+  const galleryContainer = document.getElementById("ul_elem");
+  if (!galleryContainer) {
+    console.error("Element #ul_elem not found");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://api.thecatapi.com/v1/breeds");
+    if (!response.ok) throw new Error("Failed to fetch cat breeds");
+
+    const data = await response.json();
+    galleryContainer.innerHTML = getItems(data);
+
+    // Add event listeners after rendering images
+    addGalleryImageEventListeners();
+  } catch (error) {
+    console.error("Error fetching cat images:", error);
+    galleryContainer.innerHTML =
+      "<p>Error loading cat breeds. Try again later.</p>";
+  }
 }
 
 // Function to create list items for each breed
 function getItems(data) {
-  const items = data.map((breed) => getItem(breed));
-  return items.join("");
+  return data
+    .map((breed) => {
+      const image = breed.reference_image_id
+        ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
+        : "placeholder.jpg"; // Handle missing images
+      return `
+        <li class="gallery--item">
+          <img
+            src="${image}"
+            alt="${breed.name}"
+            class="gallery--item_image"
+            data-detailed-image="${image}"
+            data-detailed-title="${breed.description}"
+          />
+          <span class="gallery--item_title">${breed.name}</span>
+        </li>
+      `;
+    })
+    .join("");
 }
-
-// Function to create an individual gallery item
-function getItem(breed) {
-  const image = `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`;
-  const name = breed.name;
-  const description = breed.description;
-
-  const item = `
-    <li class="gallery--item">
-      <img
-        src="${image}"
-        alt="${name}"
-        class="gallery--item_image"
-        data-detailed-image="${image}"
-        data-detailed-title="${description}"
-      />
-      <span class="gallery--item_title">${name}</span>
-    </li>
-  `;
-  return item;
-}
-
-// Get all gallery images
-const galleryImages = document.querySelectorAll(".gallery--item_image");
 
 // Add event listener to update central image and title
-galleryImages.forEach((image) => {
-  image.addEventListener("click", function () {
-    setDetails(image);
+function addGalleryImageEventListeners() {
+  const galleryImages = document.querySelectorAll(".gallery--item_image");
+  galleryImages.forEach((image) => {
+    image.addEventListener("click", function () {
+      setDetails(image);
+    });
   });
-});
+}
 
 function setDetails(image) {
-  // Get the detailed image and title from the clicked image
-  let imageSrc = image.getAttribute("data-detailed-image");
-  let imageTitle = image.getAttribute("data-detailed-title");
-
-  // Update the central image and description with the clicked image's data
-  detailedImage.src = imageSrc;
-  detailedTitle.innerHTML = imageTitle;
-
-  // Trigger animation for smooth transition
-  animate();
-}
-
-function animate() {
-  // Remove and re-add animation classes to trigger the animation effect
+  // Remove animation classes
   detailedImage.classList.remove("animation-up");
   detailedTitle.classList.remove("animation-down");
-  setTimeout(function () {
+
+  // Use requestAnimationFrame to ensure animation resets
+  requestAnimationFrame(() => {
+    // Change the image and text
+    detailedImage.src = image.getAttribute("data-detailed-image");
+    detailedTitle.innerHTML = image.getAttribute("data-detailed-title");
+
+    // Force reflow (ensures animations restart)
+    void detailedImage.offsetWidth;
+
+    // Re-add animation classes
     detailedImage.classList.add("animation-up");
     detailedTitle.classList.add("animation-down");
-  }, 0);
+  });
 }
 
-// Initial call to render images in the gallery
-const ulElem = document.getElementById("ul_elem");
-drawImages(ulElem);
+// Draw images when the page is loaded
+window.onload = drawImages;

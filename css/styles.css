@@ -53,13 +53,37 @@ h2 {
  
 
 }
-.animation-down {
-  animation: zoomInDown;
-  animation-duration: 2s;
+/* Smooth fade-in and slide-up effect */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* Smooth fade-in and slide-down effect */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animation-up {
-  animation: zoomInUp;
-  animation-duration: 2.5s;
+  animation: fadeSlideUp 0.3s ease-in-out;
+}
+.animation-down {
+  animation: fadeSlideDown 0.3s ease-in-out;
 }
 .detailedContainer--title {
   display: inline-block;
@@ -225,3 +249,4 @@ h2 {
     font-size: 4rem;
   }
 }
+
